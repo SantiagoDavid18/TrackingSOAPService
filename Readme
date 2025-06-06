@@ -1,1 +1,66 @@
+#TrackingSOAPService
+
+**API SOAP para seguimiento de paquetes en una empresa de logística.**
+
+Proyecto desarrollado como parte de la Actividad de Aprendizaje 2 de la asignatura Arquitectura de Software
+
+---
+
+## Descripción
+
+Este servicio SOAP permite consultar el estado actual de un paquete utilizando su número de tracking. Devuelve información como:
+
+- Estado actual
+- Ubicación actual
+- Fecha estimada de entrega
+- Historial de eventos (TrackingEvent)
+
+---
+
+## Estructura del Proyecto
+
+Este repositorio contiene:
+
+- `TrakingSoap-soapui-project.xml`: Proyecto SoapUI listo para pruebas locales.
+- `/doc`: Informe documental
+
+---
+
+## Tecnologías usadas
+
+- **SOAP**
+- **SoapUI 5.8.0**
+- **JAX-WS (generador de WSDL)**
+- **Java 17**
+
+---
+
+## Cómo probar el servicio
+
+1. **Levantar el servicio SOAP** en local (por ejemplo en `http://localhost:8080/TrackingSOAPService-1.0/ws/TrackingService`).
+
+2. **Importar el proyecto SoapUI**:
+   - Abrir `SoapUI`
+   - Archivo → `Import Project`
+   - Seleccionar `TrakingSoap-soapui-project.xml`
+
+3. **Ejecutar el request**:
+   - Abrir `Request 1`
+   - Reemplazar `<arg0>?</arg0>` con un número de tracking válido
+   - Enviar y verificar la respuesta
+
+---
+
+## Ejemplo de Mensaje SOAP
+
+### Solicitud (Request)
+```xml
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trac="http://tracking.logistica.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <trac:getTrackingStatus>
+         <arg0>PE1234567890</arg0>
+      </trac:getTrackingStatus>
+   </soapenv:Body>
+</soapenv:Envelope>
 
